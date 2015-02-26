@@ -11,6 +11,7 @@ int main()
 {
    puts("Lonnie Bowe");
    Preston(0);
+   Harold();
    return 0;
 }
 
@@ -26,4 +27,10 @@ void Preston(int index)
       printf("%c", name[index]);
       Preston(index + 1);
    }
+}
+
+void Harold()
+{
+   printf("Harold Smith\n");
+}
 }
